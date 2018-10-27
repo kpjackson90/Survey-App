@@ -28,7 +28,7 @@ class Mailer extends helper.Mail {
     const clickTracking = new helper.ClickTracking(true, true);
 
     trackingSettings.setClickTracking(clickTracking);
-    this.addTrackSettings(trackingSettings);
+    this.addTrackingSettings(trackingSettings);
   }
 
   addRecipients() {
@@ -45,7 +45,7 @@ class Mailer extends helper.Mail {
       path: "/v3/mail/send",
       body: this.toJSON()
     });
-    let response = this.sgApi.API(request);
+    const response = await this.sgApi.API(request);
     return response;
   }
 }
